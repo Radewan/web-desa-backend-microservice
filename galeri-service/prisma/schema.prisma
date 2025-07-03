@@ -1,0 +1,103 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User{
+  id Int @id @default(autoincrement())
+  name String @db.VarChar(255)
+  email String @db.VarChar(255) @unique
+  password String @db.VarChar(255)
+  role ROLE
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  news News[]
+  agenda Agenda[]
+  comments Comment[]
+  galeri Galeri[]
+
+
+  @@map("users")
+}
+
+enum ROLE{
+  USER
+  ADMIN
+  SUPER_ADMIN
+}
+
+model Galeri{
+  id Int @id @default(autoincrement())
+  user_id Int
+  image_path String @db.VarChar(255)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  user User @relation(fields: [user_id], references: [id])
+
+
+  @@map("galeri")
+}
+
+model News{
+  id Int @id @default(autoincrement())
+  user_id Int
+  title String @db.VarChar(255)
+  content String @db.Text
+  image_path String @db.VarChar(255)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+ 
+  comments Comment[] @relation("CommentNews")
+
+  user User @relation(fields: [user_id], references: [id])
+
+  @@map("news")
+}
+
+model Agenda{
+  id Int @id @default(autoincrement())
+  user_id Int
+  title String @db.VarChar(255)
+  content String @db.Text
+  image_path String @db.VarChar(255)
+  location String @db.VarChar(255)
+  date DateTime @db.Date
+  time DateTime @db.Time()
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  comments Comment[] @relation("CommentAgenda")
+
+  user User @relation(fields: [user_id], references: [id])
+
+
+  @@map("agenda")
+}
+
+model Comment{
+  id Int @id @default(autoincrement())
+  user_id Int
+  news_id Int?
+  agenda_id Int?
+  comment String @db.Text
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  user User @relation(fields: [user_id], references: [id])
+  agenda Agenda? @relation("CommentAgenda", fields: [agenda_id], references: [id])
+  news News? @relation("CommentNews", fields: [news_id], references: [id])
+
+  @@map("comments")
+}

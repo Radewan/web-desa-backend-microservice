@@ -1,0 +1,90 @@
+http:
+  port: 8080
+admin:
+  port: 9876
+  host: localhost
+apiEndpoints:
+  # see: http://www.express-gateway.io/docs/configuration/gateway.config.yml/apiEndpoints
+  users:
+    host: localhost
+    path: /users/*
+  galeri:
+    host: localhost
+    path: /galeri/*
+  news:
+    host: localhost
+    path: /news/*
+  agenda:
+    host: localhost
+    path: /agenda/*
+  comments:
+    host: localhost
+    path: /comments/*
+serviceEndpoints:
+  # see: http://www.express-gateway.io/docs/configuration/gateway.config.yml/serviceEndpoints
+  users-service:
+    url: http://localhost:3001
+  galeri-service:
+    url: http://localhost:3002
+  news-service:
+    url: http://localhost:3003
+  agenda-service:
+    url: http://localhost:3004
+  comments-service:
+    url: http://localhost:3005
+policies:
+  # - basic-auth
+  - cors
+  # - expression
+  # - key-auth
+  # - log
+  # - oauth2
+  - proxy
+  - jwt
+  # - rate-limit
+pipelines:
+  # see: https://www.express-gateway.io/docs/configuration/gateway.config.yml/pipelines
+  users-pipeline:
+    apiEndpoints:
+      - users
+    policies:
+      - proxy:
+          - action:
+              serviceEndpoint: users-service
+              changeOrigin: true
+
+  galeri-pipeline:
+    apiEndpoints:
+      - galeri
+    policies:
+      - proxy:
+          - action:
+              serviceEndpoint: galeri-service
+              changeOrigin: true
+
+  news-pipeline:
+    apiEndpoints:
+      - news
+    policies:
+      - proxy:
+          - action:
+              serviceEndpoint: news-service
+              changeOrigin: true
+
+  agenda-pipeline:
+    apiEndpoints:
+      - agenda
+    policies:
+      - proxy:
+          - action:
+              serviceEndpoint: agenda-service
+              changeOrigin: true
+
+  comments-pipeline:
+    apiEndpoints:
+      - comments
+    policies:
+      - proxy:
+          - action:
+              serviceEndpoint: comments-service
+              changeOrigin: true
