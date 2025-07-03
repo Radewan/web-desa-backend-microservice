@@ -1,0 +1,866 @@
+{
+	"info": {
+		"_postman_id": "d4f446ba-ca99-4578-a921-ea237199f52a",
+		"name": "Web Desa Backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40129308"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Super Admin",
+					"item": [
+						{
+							"name": "Create Admin",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\" : \"Rangga Admin1\",\r\n    \"email\":\"ranggadendi6admin1@mail.com\",\r\n    \"password\": \"password admin1\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{localhost}}/users/admin/create",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"users",
+										"admin",
+										"create"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const json = JSON.parse(responseBody)\r",
+									"if(json?.token) {\r",
+									"    pm.collectionVariables.set(\"token\", json.token);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"Rangga Dedi\",\r\n    \"email\":\"ranggadendi6@mail.com\",\r\n    \"password\": \"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/users/register",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const json = JSON.parse(responseBody)\r",
+									"if(json?.token) {\r",
+									"    pm.collectionVariables.set(\"token\", json.token);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"ranggadendi6admin@mail.com\",\r\n    \"password\": \"password admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/users/login",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Own User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Rangga\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/users/",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Own User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}/users/",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Galeri",
+			"item": [
+				{
+					"name": "Get All",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}/galeri/",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"galeri",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "photos",
+									"type": "file",
+									"src": [
+										"postman-cloud:///1efb088b-e553-4230-aee6-a211d1c733a0",
+										"/C:/Users/ACER/Pictures/Acer/Acer_Wallpaper_02_3840x2400.jpg"
+									]
+								}
+							]
+						},
+						"url": {
+							"raw": "{{localhost}}/galeri/",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"galeri",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}/galeri/1",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"galeri",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "News",
+			"item": [
+				{
+					"name": "Get All",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}/news/",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"news",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}/news/2",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"news",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "photo",
+									"type": "file",
+									"src": "postman-cloud:///1efb088b-e553-4230-aee6-a211d1c733a0"
+								},
+								{
+									"key": "title",
+									"value": "Judul",
+									"type": "text"
+								},
+								{
+									"key": "content",
+									"value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras malesuada imperdiet lacus, eu viverra lacus varius sit amet. Integer bibendum, tortor in rhoncus rutrum, neque elit tincidunt dolor, at pretium elit odio vel lectus. Vestibulum suscipit nec nisl in sagittis. Pellentesque mauris nibh, ornare vitae auctor nec, placerat a mi. Quisque posuere semper dolor, ac facilisis nibh interdum in. Nullam quam nisi, tincidunt id purus ut, pharetra hendrerit est. In hac habitasse platea dictumst.\n\nProin condimentum lorem urna, nec gravida lacus porta ut. Ut faucibus sodales eros, in facilisis risus rutrum tempus. In est risus, tristique id tortor vestibulum, interdum sollicitudin lectus. Proin rutrum et metus quis scelerisque. Proin luctus nulla vel enim dapibus, et cursus elit egestas. Donec non pulvinar velit. Phasellus iaculis gravida elit eget maximus. Nullam ultrices ullamcorper nulla ac mattis. Cras at porta tellus.\n\nDonec quis ex ut metus viverra viverra ut et elit. Curabitur gravida lacus lacus, vitae vehicula neque scelerisque at. Maecenas a interdum orci. Nulla tempor vehicula tellus, eu iaculis magna scelerisque quis. Vestibulum ultricies nec lacus et malesuada. Vivamus non massa suscipit, mattis diam eget, aliquam purus. Quisque eu feugiat turpis, id iaculis risus. Donec rhoncus rutrum velit et pellentesque. Nam lorem ipsum, consectetur ac arcu ut, porta aliquam velit. Sed tellus massa, consequat ac neque ac, eleifend pharetra est. Integer at fermentum mauris, at pulvinar felis. Aliquam ac ligula a risus fermentum lobortis. Quisque cursus tincidunt fringilla.\n\nPellentesque placerat fringilla purus, sed rutrum arcu fringilla et. Nullam finibus tellus orci, vel aliquet urna dictum vel. Aenean at erat ut elit pharetra sollicitudin sed ut erat. Sed consectetur iaculis neque sit amet pulvinar. Praesent venenatis nisl congue tincidunt molestie. Nunc dapibus turpis et risus tincidunt sodales. Nunc non sollicitudin lorem. Fusce leo turpis, iaculis a faucibus sit amet, tincidunt ac massa. Vestibulum hendrerit consectetur ex, consequat suscipit nulla gravida ac. Aenean malesuada, libero quis sagittis sollicitudin, dui est convallis lacus, eu pulvinar erat justo eget neque. Nunc justo risus, volutpat id nisl ac, vulputate ornare dui.\n\nProin tincidunt lorem imperdiet ipsum gravida gravida. Sed fringilla tortor at urna tempus, vel ullamcorper elit venenatis. Nullam pulvinar justo sit amet nulla finibus congue. Vivamus vel elementum nunc, vel vulputate ante. Nunc pretium iaculis quam id lacinia. Nam eleifend id tellus tincidunt tristique. Integer vel gravida tellus. Phasellus vulputate lorem eget eros consectetur, dictum vestibulum nibh sollicitudin. Sed vitae diam in purus vehicula commodo. Vestibulum tristique et velit in venenatis. Phasellus diam metus, mollis quis dui vel, auctor vulputate ligula. Maecenas laoreet, leo sed pretium posuere, risus lorem auctor nunc, vel efficitur sem velit ac ligula.\n\nNam a congue turpis, et iaculis orci. Suspendisse consequat tortor sit amet magna porttitor, ut consequat felis tincidunt. Aenean tristique felis nec libero bibendum pellentesque. Duis ultrices magna vel mi viverra, a ornare magna pretium. Praesent dapibus magna at ultrices cursus. Praesent dapibus, quam nec laoreet venenatis, quam lectus porta velit, ac iaculis ante eros feugiat nibh. Sed feugiat facilisis lorem, sed placerat felis tempus vel. Duis mattis blandit odio eget sagittis. Duis nec fermentum ipsum. Donec consectetur est sed nisl malesuada finibus eget sed eros. Donec finibus id lorem facilisis condimentum.\n\nQuisque vitae fringilla massa, nec rutrum ipsum. Cras lacinia sem at nisi laoreet vestibulum. Fusce nisl orci, egestas ac nisl id, tristique scelerisque augue. Duis consequat lectus molestie tempus vestibulum. Suspendisse euismod, leo non luctus interdum, sem mauris lacinia ipsum, vitae elementum arcu elit a orci. Duis sed lacinia lacus, in suscipit lectus. Etiam justo ante, sagittis in consectetur sit amet, aliquet id magna. Nulla rutrum purus in augue ullamcorper pretium. Proin varius eu nibh at tempor. Aliquam erat volutpat. Nam euismod ipsum bibendum turpis facilisis, quis varius purus finibus. Pellentesque felis neque, hendrerit et sagittis non, ornare at tortor. Nulla vel diam purus.\n\nIn sit amet massa mollis, tincidunt arcu ac, viverra urna. Maecenas laoreet tellus quis leo efficitur tincidunt. Vestibulum vitae est non libero facilisis pulvinar nec ut mi. Vivamus hendrerit eros et velit imperdiet varius. Sed lobortis tortor vel dui ultricies porta. Vivamus eget ultrices nisi. Nulla suscipit suscipit arcu ut egestas. Vestibulum nulla ante, venenatis tincidunt varius eget, tempus vitae tellus.\n\nIn ultricies, massa id consequat rutrum, justo nisl hendrerit nulla, ut luctus sapien odio non mauris. Suspendisse potenti. Sed finibus blandit odio vel condimentum. Donec pretium, odio vitae gravida venenatis, justo sapien venenatis orci, eu dignissim augue est at justo. Nullam ornare mollis odio nec varius. Cras interdum tortor nec accumsan euismod. Cras tempor, lorem id pretium posuere, tortor nisl vehicula odio, eu suscipit neque nunc quis magna. Maecenas volutpat mauris neque, at accumsan dolor elementum at. Sed ornare porttitor mi sit amet ultrices. Vivamus ac sapien sem. In cursus quis arcu at porttitor. Sed id lectus quis justo sodales porta vitae a erat. Proin finibus augue sed mi ultrices consequat. Phasellus in urna vel neque ultrices rutrum quis iaculis elit. Ut viverra dui non ex hendrerit, ac faucibus sem rhoncus. Cras sodales nec nisl at venenatis.\n\nCras varius consequat libero. Sed ut tristique nisi. Sed vel auctor ipsum, eu lobortis lacus. Nullam varius vehicula lectus. Sed efficitur ligula tristique venenatis lobortis. Nulla non fermentum urna, eu dictum enim. Integer arcu magna, dapibus vitae volutpat eget, fringilla et sem. Pellentesque eu tristique erat.",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{localhost}}/news/",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"news",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "photo",
+									"type": "file",
+									"src": "postman-cloud:///1efb088b-e553-4230-aee6-a211d1c733a0"
+								},
+								{
+									"key": "title",
+									"value": "Judul Baru",
+									"type": "text"
+								},
+								{
+									"key": "content",
+									"value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras malesuada imperdiet lacus, eu viverra lacus varius sit amet. Integer bibendum, tortor in rhoncus rutrum, neque elit tincidunt dolor, at pretium elit odio vel lectus. Vestibulum suscipit nec nisl in sagittis. Pellentesque mauris nibh, ornare vitae auctor nec, placerat a mi. Quisque posuere semper dolor, ac facilisis nibh interdum in. Nullam quam nisi, tincidunt id purus ut, pharetra hendrerit est. In hac habitasse platea dictumst.\n\nProin condimentum lorem urna, nec gravida lacus porta ut. Ut faucibus sodales eros, in facilisis risus rutrum tempus. In est risus, tristique id tortor vestibulum, interdum sollicitudin lectus. Proin rutrum et metus quis scelerisque. Proin luctus nulla vel enim dapibus, et cursus elit egestas. Donec non pulvinar velit. Phasellus iaculis gravida elit eget maximus. Nullam ultrices ullamcorper nulla ac mattis. Cras at porta tellus.\n\nDonec quis ex ut metus viverra viverra ut et elit. Curabitur gravida lacus lacus, vitae vehicula neque scelerisque at. Maecenas a interdum orci. Nulla tempor vehicula tellus, eu iaculis magna scelerisque quis. Vestibulum ultricies nec lacus et malesuada. Vivamus non massa suscipit, mattis diam eget, aliquam purus. Quisque eu feugiat turpis, id iaculis risus. Donec rhoncus rutrum velit et pellentesque. Nam lorem ipsum, consectetur ac arcu ut, porta aliquam velit. Sed tellus massa, consequat ac neque ac, eleifend pharetra est. Integer at fermentum mauris, at pulvinar felis. Aliquam ac ligula a risus fermentum lobortis. Quisque cursus tincidunt fringilla.\n\nPellentesque placerat fringilla purus, sed rutrum arcu fringilla et. Nullam finibus tellus orci, vel aliquet urna dictum vel. Aenean at erat ut elit pharetra sollicitudin sed ut erat. Sed consectetur iaculis neque sit amet pulvinar. Praesent venenatis nisl congue tincidunt molestie. Nunc dapibus turpis et risus tincidunt sodales. Nunc non sollicitudin lorem. Fusce leo turpis, iaculis a faucibus sit amet, tincidunt ac massa. Vestibulum hendrerit consectetur ex, consequat suscipit nulla gravida ac. Aenean malesuada, libero quis sagittis sollicitudin, dui est convallis lacus, eu pulvinar erat justo eget neque. Nunc justo risus, volutpat id nisl ac, vulputate ornare dui.\n\nProin tincidunt lorem imperdiet ipsum gravida gravida. Sed fringilla tortor at urna tempus, vel ullamcorper elit venenatis. Nullam pulvinar justo sit amet nulla finibus congue. Vivamus vel elementum nunc, vel vulputate ante. Nunc pretium iaculis quam id lacinia. Nam eleifend id tellus tincidunt tristique. Integer vel gravida tellus. Phasellus vulputate lorem eget eros consectetur, dictum vestibulum nibh sollicitudin. Sed vitae diam in purus vehicula commodo. Vestibulum tristique et velit in venenatis. Phasellus diam metus, mollis quis dui vel, auctor vulputate ligula. Maecenas laoreet, leo sed pretium posuere, risus lorem auctor nunc, vel efficitur sem velit ac ligula.\n\nNam a congue turpis, et iaculis orci. Suspendisse consequat tortor sit amet magna porttitor, ut consequat felis tincidunt. Aenean tristique felis nec libero bibendum pellentesque. Duis ultrices magna vel mi viverra, a ornare magna pretium. Praesent dapibus magna at ultrices cursus. Praesent dapibus, quam nec laoreet venenatis, quam lectus porta velit, ac iaculis ante eros feugiat nibh. Sed feugiat facilisis lorem, sed placerat felis tempus vel. Duis mattis blandit odio eget sagittis. Duis nec fermentum ipsum. Donec consectetur est sed nisl malesuada finibus eget sed eros. Donec finibus id lorem facilisis condimentum.\n\nQuisque vitae fringilla massa, nec rutrum ipsum. Cras lacinia sem at nisi laoreet vestibulum. Fusce nisl orci, egestas ac nisl id, tristique scelerisque augue. Duis consequat lectus molestie tempus vestibulum. Suspendisse euismod, leo non luctus interdum, sem mauris lacinia ipsum, vitae elementum arcu elit a orci. Duis sed lacinia lacus, in suscipit lectus. Etiam justo ante, sagittis in consectetur sit amet, aliquet id magna. Nulla rutrum purus in augue ullamcorper pretium. Proin varius eu nibh at tempor. Aliquam erat volutpat. Nam euismod ipsum bibendum turpis facilisis, quis varius purus finibus. Pellentesque felis neque, hendrerit et sagittis non, ornare at tortor. Nulla vel diam purus.\n\nIn sit amet massa mollis, tincidunt arcu ac, viverra urna. Maecenas laoreet tellus quis leo efficitur tincidunt. Vestibulum vitae est non libero facilisis pulvinar nec ut mi. Vivamus hendrerit eros et velit imperdiet varius. Sed lobortis tortor vel dui ultricies porta. Vivamus eget ultrices nisi. Nulla suscipit suscipit arcu ut egestas. Vestibulum nulla ante, venenatis tincidunt varius eget, tempus vitae tellus.\n\nIn ultricies, massa id consequat rutrum, justo nisl hendrerit nulla, ut luctus sapien odio non mauris. Suspendisse potenti. Sed finibus blandit odio vel condimentum. Donec pretium, odio vitae gravida venenatis, justo sapien venenatis orci, eu dignissim augue est at justo. Nullam ornare mollis odio nec varius. Cras interdum tortor nec accumsan euismod. Cras tempor, lorem id pretium posuere, tortor nisl vehicula odio, eu suscipit neque nunc quis magna. Maecenas volutpat mauris neque, at accumsan dolor elementum at. Sed ornare porttitor mi sit amet ultrices. Vivamus ac sapien sem. In cursus quis arcu at porttitor. Sed id lectus quis justo sodales porta vitae a erat. Proin finibus augue sed mi ultrices consequat. Phasellus in urna vel neque ultrices rutrum quis iaculis elit. Ut viverra dui non ex hendrerit, ac faucibus sem rhoncus. Cras sodales nec nisl at venenatis.\n\nCras varius consequat libero. Sed ut tristique nisi. Sed vel auctor ipsum, eu lobortis lacus. Nullam varius vehicula lectus. Sed efficitur ligula tristique venenatis lobortis. Nulla non fermentum urna, eu dictum enim. Integer arcu magna, dapibus vitae volutpat eget, fringilla et sem. Pellentesque eu tristique erat.",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{localhost}}/news/2",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"news",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}/news/3",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"news",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comments",
+			"item": [
+				{
+					"name": "Create Comment News",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"comment\": \"hoax\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/comments/news/2",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"comments",
+								"news",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Comment Agenda",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"comment\": \"kocak\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/comments/agenda/2",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"comments",
+								"agenda",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"comment\": \"bisa2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/comments/9",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"comments",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}/comments/2",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"comments",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Agenda",
+			"item": [
+				{
+					"name": "Get All",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}/agenda/",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"agenda",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}/agenda/1",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"agenda",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "photo",
+									"type": "file",
+									"src": "postman-cloud:///1efb088b-e553-4230-aee6-a211d1c733a0"
+								},
+								{
+									"key": "title",
+									"value": "Judul",
+									"type": "text"
+								},
+								{
+									"key": "content",
+									"value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras malesuada imperdiet lacus, eu viverra lacus varius sit amet. Integer bibendum, tortor in rhoncus rutrum, neque elit tincidunt dolor, at pretium elit odio vel lectus. Vestibulum suscipit nec nisl in sagittis. Pellentesque mauris nibh, ornare vitae auctor nec, placerat a mi. Quisque posuere semper dolor, ac facilisis nibh interdum in. Nullam quam nisi, tincidunt id purus ut, pharetra hendrerit est. In hac habitasse platea dictumst.\n\nProin condimentum lorem urna, nec gravida lacus porta ut. Ut faucibus sodales eros, in facilisis risus rutrum tempus. In est risus, tristique id tortor vestibulum, interdum sollicitudin lectus. Proin rutrum et metus quis scelerisque. Proin luctus nulla vel enim dapibus, et cursus elit egestas. Donec non pulvinar velit. Phasellus iaculis gravida elit eget maximus. Nullam ultrices ullamcorper nulla ac mattis. Cras at porta tellus.",
+									"type": "text"
+								},
+								{
+									"key": "location",
+									"value": "Alun-Alun",
+									"type": "text"
+								},
+								{
+									"key": "date",
+									"value": "2025-07-03",
+									"type": "text"
+								},
+								{
+									"key": "time",
+									"value": "14:30",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{localhost}}/agenda/",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"agenda",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Copy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "photo",
+									"type": "file",
+									"src": "postman-cloud:///1efb088b-e553-4230-aee6-a211d1c733a0"
+								},
+								{
+									"key": "title",
+									"value": "Judul Baru",
+									"type": "text"
+								},
+								{
+									"key": "content",
+									"value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras malesuada imperdiet lacus, eu viverra lacus varius sit amet. Integer bibendum, tortor in rhoncus rutrum, neque elit tincidunt dolor, at pretium elit odio vel lectus. Vestibulum suscipit nec nisl in sagittis. Pellentesque mauris nibh, ornare vitae auctor nec, placerat a mi. Quisque posuere semper dolor, ac facilisis nibh interdum in. Nullam quam nisi, tincidunt id purus ut, pharetra hendrerit est. In hac habitasse platea dictumst.\n\nProin condimentum lorem urna, nec gravida lacus porta ut. Ut faucibus sodales eros, in facilisis risus rutrum tempus. In est risus, tristique id tortor vestibulum, interdum sollicitudin lectus. Proin rutrum et metus quis scelerisque. Proin luctus nulla vel enim dapibus, et cursus elit egestas. Donec non pulvinar velit. Phasellus iaculis gravida elit eget maximus. Nullam ultrices ullamcorper nulla ac mattis. Cras at porta tellus.\n\nDonec quis ex ut metus viverra viverra ut et elit. Curabitur gravida lacus lacus, vitae vehicula neque scelerisque at. Maecenas a interdum orci. Nulla tempor vehicula tellus, eu iaculis magna scelerisque quis. Vestibulum ultricies nec lacus et malesuada. Vivamus non massa suscipit, mattis diam eget, aliquam purus. Quisque eu feugiat turpis, id iaculis risus. Donec rhoncus rutrum velit et pellentesque. Nam lorem ipsum, consectetur ac arcu ut, porta aliquam velit. Sed tellus massa, consequat ac neque ac, eleifend pharetra est. Integer at fermentum mauris, at pulvinar felis. Aliquam ac ligula a risus fermentum lobortis. Quisque cursus tincidunt fringilla.\n\nPellentesque placerat fringilla purus, sed rutrum arcu fringilla et. Nullam finibus tellus orci, vel aliquet urna dictum vel. Aenean at erat ut elit pharetra sollicitudin sed ut erat. Sed consectetur iaculis neque sit amet pulvinar. Praesent venenatis nisl congue tincidunt molestie. Nunc dapibus turpis et risus tincidunt sodales. Nunc non sollicitudin lorem. Fusce leo turpis, iaculis a faucibus sit amet, tincidunt ac massa. Vestibulum hendrerit consectetur ex, consequat suscipit nulla gravida ac. Aenean malesuada, libero quis sagittis sollicitudin, dui est convallis lacus, eu pulvinar erat justo eget neque. Nunc justo risus, volutpat id nisl ac, vulputate ornare dui.\n\nProin tincidunt lorem imperdiet ipsum gravida gravida. Sed fringilla tortor at urna tempus, vel ullamcorper elit venenatis. Nullam pulvinar justo sit amet nulla finibus congue. Vivamus vel elementum nunc, vel vulputate ante. Nunc pretium iaculis quam id lacinia. Nam eleifend id tellus tincidunt tristique. Integer vel gravida tellus. Phasellus vulputate lorem eget eros consectetur, dictum vestibulum nibh sollicitudin. Sed vitae diam in purus vehicula commodo. Vestibulum tristique et velit in venenatis. Phasellus diam metus, mollis quis dui vel, auctor vulputate ligula. Maecenas laoreet, leo sed pretium posuere, risus lorem auctor nunc, vel efficitur sem velit ac ligula.\n\nNam a congue turpis, et iaculis orci. Suspendisse consequat tortor sit amet magna porttitor, ut consequat felis tincidunt. Aenean tristique felis nec libero bibendum pellentesque. Duis ultrices magna vel mi viverra, a ornare magna pretium. Praesent dapibus magna at ultrices cursus. Praesent dapibus, quam nec laoreet venenatis, quam lectus porta velit, ac iaculis ante eros feugiat nibh. Sed feugiat facilisis lorem, sed placerat felis tempus vel. Duis mattis blandit odio eget sagittis. Duis nec fermentum ipsum. Donec consectetur est sed nisl malesuada finibus eget sed eros. Donec finibus id lorem facilisis condimentum.\n\nQuisque vitae fringilla massa, nec rutrum ipsum. Cras lacinia sem at nisi laoreet vestibulum. Fusce nisl orci, egestas ac nisl id, tristique scelerisque augue. Duis consequat lectus molestie tempus vestibulum. Suspendisse euismod, leo non luctus interdum, sem mauris lacinia ipsum, vitae elementum arcu elit a orci. Duis sed lacinia lacus, in suscipit lectus. Etiam justo ante, sagittis in consectetur sit amet, aliquet id magna. Nulla rutrum purus in augue ullamcorper pretium. Proin varius eu nibh at tempor. Aliquam erat volutpat. Nam euismod ipsum bibendum turpis facilisis, quis varius purus finibus. Pellentesque felis neque, hendrerit et sagittis non, ornare at tortor. Nulla vel diam purus.\n\nIn sit amet massa mollis, tincidunt arcu ac, viverra urna. Maecenas laoreet tellus quis leo efficitur tincidunt. Vestibulum vitae est non libero facilisis pulvinar nec ut mi. Vivamus hendrerit eros et velit imperdiet varius. Sed lobortis tortor vel dui ultricies porta. Vivamus eget ultrices nisi. Nulla suscipit suscipit arcu ut egestas. Vestibulum nulla ante, venenatis tincidunt varius eget, tempus vitae tellus.\n\nIn ultricies, massa id consequat rutrum, justo nisl hendrerit nulla, ut luctus sapien odio non mauris. Suspendisse potenti. Sed finibus blandit odio vel condimentum. Donec pretium, odio vitae gravida venenatis, justo sapien venenatis orci, eu dignissim augue est at justo. Nullam ornare mollis odio nec varius. Cras interdum tortor nec accumsan euismod. Cras tempor, lorem id pretium posuere, tortor nisl vehicula odio, eu suscipit neque nunc quis magna. Maecenas volutpat mauris neque, at accumsan dolor elementum at. Sed ornare porttitor mi sit amet ultrices. Vivamus ac sapien sem. In cursus quis arcu at porttitor. Sed id lectus quis justo sodales porta vitae a erat. Proin finibus augue sed mi ultrices consequat. Phasellus in urna vel neque ultrices rutrum quis iaculis elit. Ut viverra dui non ex hendrerit, ac faucibus sem rhoncus. Cras sodales nec nisl at venenatis.\n\nCras varius consequat libero. Sed ut tristique nisi. Sed vel auctor ipsum, eu lobortis lacus. Nullam varius vehicula lectus. Sed efficitur ligula tristique venenatis lobortis. Nulla non fermentum urna, eu dictum enim. Integer arcu magna, dapibus vitae volutpat eget, fringilla et sem. Pellentesque eu tristique erat.",
+									"type": "text"
+								},
+								{
+									"key": "location",
+									"value": "Alun-Alun",
+									"type": "text"
+								},
+								{
+									"key": "date",
+									"value": "2025-07-03",
+									"type": "text"
+								},
+								{
+									"key": "time",
+									"value": "14:30",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{localhost}}/news/2",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"news",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Copy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}/agenda/3",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"agenda",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "localhost",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
