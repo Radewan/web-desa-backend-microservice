@@ -20,7 +20,20 @@ export class NewsService {
         id: newsId,
       },
       include: {
-        comments: true,
+        comments: {
+          include: {
+            user: {
+              select:{
+                id: true,
+                name: true,
+                email: true,
+                role: true,
+                created_at: true,
+                updated_at: true,
+              }
+            },
+          },
+        },
         user: true,
       },
     });

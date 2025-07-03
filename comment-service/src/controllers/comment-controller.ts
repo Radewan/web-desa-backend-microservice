@@ -38,7 +38,7 @@ export class CommentController {
     if (isNaN(agendaId)) {
       throw new ResponseError(400, "Comment id invalid");
     }
-    const response = await CommentService.createNews(
+    const response = await CommentService.createAgenda(
       commentCreateRequest,
       user,
       agendaId

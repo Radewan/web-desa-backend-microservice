@@ -14,7 +14,7 @@ export interface NewsResponse {
 export interface NewsDetailResponse {
   news: NewsResponse;
   user?: User;
-  user_created?: UserPayload;
+  user_maked?: UserPayload;
   comments?: Comment[];
 }
 
@@ -43,7 +43,7 @@ export const toNewsDetailResponse = (news: Mantap): NewsDetailResponse => {
       created_at: news.created_at,
       updated_at: news.updated_at,
     },
-    user_created: toUserPayload(news.user!),
+    user_maked: toUserPayload(news.user!),
     comments: news.comments!.map((comment) => ({
       ...comment,
     })),
