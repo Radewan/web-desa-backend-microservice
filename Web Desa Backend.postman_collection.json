@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "d4f446ba-ca99-4578-a921-ea237199f52a",
 		"name": "Web Desa Backend",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
 		"_exporter_id": "40129308"
 	},
 	"item": [
@@ -29,13 +29,9 @@
 							"request": {
 								"auth": {
 									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{token}}",
-											"type": "string"
-										}
-									]
+									"bearer": {
+										"token": "{{token}}"
+									}
 								},
 								"method": "POST",
 								"header": [],
@@ -48,17 +44,7 @@
 										}
 									}
 								},
-								"url": {
-									"raw": "{{localhost}}/users/admin/create",
-									"host": [
-										"{{localhost}}"
-									],
-									"path": [
-										"users",
-										"admin",
-										"create"
-									]
-								}
+								"url": "{{localhost}}/users/admin/create"
 							},
 							"response": []
 						}
@@ -86,23 +72,14 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\" : \"Rangga Dedi\",\r\n    \"email\":\"ranggadendi6@mail.com\",\r\n    \"password\": \"password\"\r\n}",
+							"raw": "{\r\n    \"name\" : \"Rangga Dedi\",\r\n    \"email\":\"ranggadendi@mail.com\",\r\n    \"password\": \"password\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": {
-							"raw": "{{localhost}}/users/register",
-							"host": [
-								"{{localhost}}"
-							],
-							"path": [
-								"users",
-								"register"
-							]
-						}
+						"url": "{{localhost}}/users/register"
 					},
 					"response": []
 				},
@@ -128,23 +105,14 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\":\"ranggadendi6admin@mail.com\",\r\n    \"password\": \"password admin\"\r\n}",
+							"raw": "{\r\n    \"email\":\"ranggadendi@mail.com\",\r\n    \"password\": \"password\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": {
-							"raw": "{{localhost}}/users/login",
-							"host": [
-								"{{localhost}}"
-							],
-							"path": [
-								"users",
-								"login"
-							]
-						}
+						"url": "{{localhost}}/users/login"
 					},
 					"response": []
 				},
@@ -153,13 +121,9 @@
 					"request": {
 						"auth": {
 							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
+							"bearer": {
+								"token": "{{token}}"
+							}
 						},
 						"method": "PATCH",
 						"header": [],
@@ -172,16 +136,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{localhost}}/users/",
-							"host": [
-								"{{localhost}}"
-							],
-							"path": [
-								"users",
-								""
-							]
-						}
+						"url": "{{localhost}}/users/"
 					},
 					"response": []
 				},
@@ -190,26 +145,13 @@
 					"request": {
 						"auth": {
 							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
+							"bearer": {
+								"token": "{{token}}"
+							}
 						},
 						"method": "DELETE",
 						"header": [],
-						"url": {
-							"raw": "{{localhost}}/users/",
-							"host": [
-								"{{localhost}}"
-							],
-							"path": [
-								"users",
-								""
-							]
-						}
+						"url": "{{localhost}}/users/"
 					},
 					"response": []
 				}
@@ -226,16 +168,7 @@
 						},
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "{{localhost}}/galeri/",
-							"host": [
-								"{{localhost}}"
-							],
-							"path": [
-								"galeri",
-								""
-							]
-						}
+						"url": "{{localhost}}/galeri/"
 					},
 					"response": []
 				},
@@ -244,13 +177,9 @@
 					"request": {
 						"auth": {
 							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
+							"bearer": {
+								"token": "{{token}}"
+							}
 						},
 						"method": "POST",
 						"header": [],
@@ -267,16 +196,7 @@
 								}
 							]
 						},
-						"url": {
-							"raw": "{{localhost}}/galeri/",
-							"host": [
-								"{{localhost}}"
-							],
-							"path": [
-								"galeri",
-								""
-							]
-						}
+						"url": "{{localhost}}/galeri/"
 					},
 					"response": []
 				},
@@ -285,26 +205,13 @@
 					"request": {
 						"auth": {
 							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
+							"bearer": {
+								"token": "{{token}}"
+							}
 						},
 						"method": "DELETE",
 						"header": [],
-						"url": {
-							"raw": "{{localhost}}/galeri/1",
-							"host": [
-								"{{localhost}}"
-							],
-							"path": [
-								"galeri",
-								"1"
-							]
-						}
+						"url": "{{localhost}}/galeri/1"
 					},
 					"response": []
 				}
@@ -321,16 +228,7 @@
 						},
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "{{localhost}}/news/",
-							"host": [
-								"{{localhost}}"
-							],
-							"path": [
-								"news",
-								""
-							]
-						}
+						"url": "{{localhost}}/news/"
 					},
 					"response": []
 				},
@@ -342,16 +240,7 @@
 						},
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "{{localhost}}/news/2",
-							"host": [
-								"{{localhost}}"
-							],
-							"path": [
-								"news",
-								"2"
-							]
-						}
+						"url": "{{localhost}}/news/2"
 					},
 					"response": []
 				},
@@ -360,13 +249,9 @@
 					"request": {
 						"auth": {
 							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
+							"bearer": {
+								"token": "{{token}}"
+							}
 						},
 						"method": "POST",
 						"header": [],
@@ -390,16 +275,7 @@
 								}
 							]
 						},
-						"url": {
-							"raw": "{{localhost}}/news/",
-							"host": [
-								"{{localhost}}"
-							],
-							"path": [
-								"news",
-								""
-							]
-						}
+						"url": "{{localhost}}/news/"
 					},
 					"response": []
 				},
@@ -408,13 +284,9 @@
 					"request": {
 						"auth": {
 							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
+							"bearer": {
+								"token": "{{token}}"
+							}
 						},
 						"method": "PATCH",
 						"header": [],
@@ -438,16 +310,7 @@
 								}
 							]
 						},
-						"url": {
-							"raw": "{{localhost}}/news/2",
-							"host": [
-								"{{localhost}}"
-							],
-							"path": [
-								"news",
-								"2"
-							]
-						}
+						"url": "{{localhost}}/news/2"
 					},
 					"response": []
 				},
@@ -456,26 +319,13 @@
 					"request": {
 						"auth": {
 							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
+							"bearer": {
+								"token": "{{token}}"
+							}
 						},
 						"method": "DELETE",
 						"header": [],
-						"url": {
-							"raw": "{{localhost}}/news/3",
-							"host": [
-								"{{localhost}}"
-							],
-							"path": [
-								"news",
-								"3"
-							]
-						}
+						"url": "{{localhost}}/news/3"
 					},
 					"response": []
 				}
@@ -489,13 +339,9 @@
 					"request": {
 						"auth": {
 							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
+							"bearer": {
+								"token": "{{token}}"
+							}
 						},
 						"method": "POST",
 						"header": [],
@@ -508,17 +354,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{localhost}}/comments/news/2",
-							"host": [
-								"{{localhost}}"
-							],
-							"path": [
-								"comments",
-								"news",
-								"2"
-							]
-						}
+						"url": "{{localhost}}/comments/news/2"
 					},
 					"response": []
 				},
@@ -527,13 +363,9 @@
 					"request": {
 						"auth": {
 							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
+							"bearer": {
+								"token": "{{token}}"
+							}
 						},
 						"method": "POST",
 						"header": [],
@@ -546,17 +378,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{localhost}}/comments/agenda/2",
-							"host": [
-								"{{localhost}}"
-							],
-							"path": [
-								"comments",
-								"agenda",
-								"2"
-							]
-						}
+						"url": "{{localhost}}/comments/agenda/2"
 					},
 					"response": []
 				},
@@ -565,13 +387,9 @@
 					"request": {
 						"auth": {
 							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
+							"bearer": {
+								"token": "{{token}}"
+							}
 						},
 						"method": "PUT",
 						"header": [],
@@ -584,16 +402,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{localhost}}/comments/9",
-							"host": [
-								"{{localhost}}"
-							],
-							"path": [
-								"comments",
-								"9"
-							]
-						}
+						"url": "{{localhost}}/comments/9"
 					},
 					"response": []
 				},
@@ -602,26 +411,13 @@
 					"request": {
 						"auth": {
 							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
+							"bearer": {
+								"token": "{{token}}"
+							}
 						},
 						"method": "DELETE",
 						"header": [],
-						"url": {
-							"raw": "{{localhost}}/comments/2",
-							"host": [
-								"{{localhost}}"
-							],
-							"path": [
-								"comments",
-								"2"
-							]
-						}
+						"url": "{{localhost}}/comments/2"
 					},
 					"response": []
 				}
@@ -638,16 +434,7 @@
 						},
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "{{localhost}}/agenda/",
-							"host": [
-								"{{localhost}}"
-							],
-							"path": [
-								"agenda",
-								""
-							]
-						}
+						"url": "{{localhost}}/agenda/"
 					},
 					"response": []
 				},
@@ -659,16 +446,7 @@
 						},
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "{{localhost}}/agenda/1",
-							"host": [
-								"{{localhost}}"
-							],
-							"path": [
-								"agenda",
-								"1"
-							]
-						}
+						"url": "{{localhost}}/agenda/1"
 					},
 					"response": []
 				},
@@ -677,13 +455,9 @@
 					"request": {
 						"auth": {
 							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
+							"bearer": {
+								"token": "{{token}}"
+							}
 						},
 						"method": "POST",
 						"header": [],
@@ -722,16 +496,7 @@
 								}
 							]
 						},
-						"url": {
-							"raw": "{{localhost}}/agenda/",
-							"host": [
-								"{{localhost}}"
-							],
-							"path": [
-								"agenda",
-								""
-							]
-						}
+						"url": "{{localhost}}/agenda/"
 					},
 					"response": []
 				},
@@ -740,13 +505,9 @@
 					"request": {
 						"auth": {
 							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
+							"bearer": {
+								"token": "{{token}}"
+							}
 						},
 						"method": "PATCH",
 						"header": [],
@@ -785,16 +546,7 @@
 								}
 							]
 						},
-						"url": {
-							"raw": "{{localhost}}/news/2",
-							"host": [
-								"{{localhost}}"
-							],
-							"path": [
-								"news",
-								"2"
-							]
-						}
+						"url": "{{localhost}}/news/2"
 					},
 					"response": []
 				},
@@ -803,26 +555,13 @@
 					"request": {
 						"auth": {
 							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
+							"bearer": {
+								"token": "{{token}}"
+							}
 						},
 						"method": "DELETE",
 						"header": [],
-						"url": {
-							"raw": "{{localhost}}/agenda/3",
-							"host": [
-								"{{localhost}}"
-							],
-							"path": [
-								"agenda",
-								"3"
-							]
-						}
+						"url": "{{localhost}}/agenda/3"
 					},
 					"response": []
 				}

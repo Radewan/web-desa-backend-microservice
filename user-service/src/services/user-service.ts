@@ -95,9 +95,11 @@ export class UserService {
   }
 
   static async delete(user: UserPayload) {
+    console.log(user.role);
     if (user.role === "SUPER_ADMIN") {
       throw new ResponseError(403, "Forbidden");
     }
+
     await prismaClient.user.delete({
       where: {
         id: user.id,
