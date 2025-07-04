@@ -7,7 +7,7 @@ import cors from "cors";
 export const web = express();
 web.use(
   cors({
-    origin: "http://localhost:8080",
+    origin: "http://localhost:3000",
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );

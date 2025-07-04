@@ -100,6 +100,30 @@ export class UserService {
       throw new ResponseError(403, "Forbidden");
     }
 
+    await prismaClient.news.deleteMany({
+      where: {
+        user_id: user.id,
+      },
+    });
+
+    await prismaClient.comment.deleteMany({
+      where: {
+        user_id: user.id,
+      },
+    });
+
+    await prismaClient.agenda.deleteMany({
+      where: {
+        user_id: user.id,
+      },
+    });
+
+    await prismaClient.galeri.deleteMany({
+      where: {
+        user_id: user.id,
+      },
+    });
+
     await prismaClient.user.delete({
       where: {
         id: user.id,
